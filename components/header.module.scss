@@ -1,0 +1,21 @@
+.header{
+  padding:1rem;
+  background-color:#000030;
+  color:white;
+  display:grid;
+  grid-template: 
+  "... title link  login ..." auto
+  /1fr 700px 100px 200px 1fr;
+  > h1 {
+    grid-area: title;
+    cursor:pointer;
+  }
+  > button {
+    grid-area: login;
+  }
+  > a {
+    display:block;
+    grid-area: link;
+  }
+
+}

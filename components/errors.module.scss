@@ -1,0 +1,20 @@
+.errors{
+  position:fixed;
+  bottom:0;
+  right:0;
+  max-width: 200px;
+  z-index: 3;
+  > li {
+    list-style: none;
+    background-color:#400000;
+    color:white;
+    margin-top:0.5rem;
+    padding:0.5rem;
+    &:last-child{
+      cursor:pointer;
+      background-color: #004000;
+      text-align: center;
+    }
+  }
+
+}

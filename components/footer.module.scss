@@ -1,0 +1,16 @@
+.footer{
+  padding:1rem;
+  background-color:#000030;
+  color:white;
+  display:grid;
+  grid-template: 
+  "... title ..... ..." auto
+  /1fr 800px 200px 1fr;
+  > h1 {
+    grid-area: title;
+  }
+  > button {
+    grid-area: login;
+  }
+
+}

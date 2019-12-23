@@ -13,8 +13,13 @@
     "deploy": "node deployFauna.js"
   },
   "dependencies": {
+    "@zeit/next-css": "^1.0.1",
+    "@zeit/next-sass": "^1.0.1",
     "faunadb": "^2.10.2",
     "next": "^9.1.6",
+    "node-sass": "^4.13.0",
+    "overmind": "^21.0.0",
+    "overmind-react": "^22.0.0",
     "react": "^16.8.6",
     "react-dom": "^16.8.6"
   }

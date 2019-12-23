@@ -1,0 +1,34 @@
+html,body{
+  height:100%;
+  margin:0;
+}
+* {
+  margin:0;
+  font-size: 1rem;
+  box-sizing: border-box;
+}
+
+.container {
+  display:relative;
+  min-height: 100vh;
+  display:grid;
+  grid-template:
+  "header header" auto
+  "...... ......" 1fr
+  "JSON   page  " auto
+  "...... ......" 1fr
+  "footer footer" auto
+  / 1fr   1fr;
+  >header {
+    grid-area:header;
+  }
+  > footer {
+    grid-area:footer;
+  }
+  > main {
+    grid-area: page;
+  }
+  > section {
+    grid-area: JSON;
+  }
+}

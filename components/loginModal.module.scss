@@ -1,0 +1,26 @@
+.loginModal {
+  padding:1rem;
+  background-color:#c0c0c0;
+  box-shadow: 0 0 10px black;
+  position:fixed;
+  top:50%;
+  left:50%;
+  min-width:200px;
+  transform: translate(-50%,-50%);
+  z-index: 2;
+  > input {
+    display:block;
+    padding:0.5rem;
+    width:100%;
+  }
+}
+
+.background {
+  background-color:rgba(0,0,0,0.5);
+  position:fixed;
+  top:0;
+  bottom:0;
+  left:0;
+  right:0;
+  z-index: 1;
+}
