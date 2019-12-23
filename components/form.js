@@ -80,6 +80,6 @@ const Choice = props => {
 const Input = props => {
   const {state,actions} = useOvermind()
   return (
-    <input onChange={(e)=>actions.setField({field:props.field,value:e.target.value})} value={state.activeForm[props.field]} />
+    <input onChange={(e)=>actions.setField({field:props.field,value:e.target.value})} value={state.activeForm[props.field] || ""} />
   )
 }

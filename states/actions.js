@@ -49,7 +49,7 @@ export default {
       state.activeForm.wideStep &&
       state.activeForm.properHeightStep &&
       (
-        (state.activeForm.contactMe === "Yes" && state.activeForm.requestEmail !== '') ||
+        (state.activeForm.contactMe === "Yes" && state.activeForm.requestEmail !== '' && state.activeForm.requestEmail) ||
         (state.activeForm.contactMe === "No")
       )
     ){
@@ -68,7 +68,7 @@ export default {
 
   },
   resetForm: ({state}) => {
-
+    state.activeForm = {}
   },
   sendAllSavedForms: ({state}) => {
 
