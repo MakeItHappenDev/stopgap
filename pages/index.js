@@ -40,8 +40,8 @@ const Home = () => {
   const tryLogin = ()=> {
     //test email + password login faunaDB
     const myLogin = client.query(
-      q.Login(q.Match(q.Index("user_by_email"),email),
-      {password:password}))
+      q.Call('login_safe', [email,password])
+      )
       myLogin.then((response)=>{
         //setSecret(response.ref.secret)
         setLogedInClient(new fauna.Client({secret:response.secret}))
@@ -83,7 +83,7 @@ const Home = () => {
       <>
       <h1>login</h1>
       <input value={email} onChange={(e)=>setEmail(e.target.value)}/>
-      <input value={password} onChange={(e)=>setPassword(e.target.value)}/>
+      <input value={password} type="password" onChange={(e)=>setPassword(e.target.value)}/>
       <button onClick={()=>tryLogin()}>Login</button>
       </>
     }

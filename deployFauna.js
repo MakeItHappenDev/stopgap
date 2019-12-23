@@ -51,6 +51,37 @@ await server.query(q.CreateIndex({
 })).catch(catchMe)
 
 
+console.log("Creating role: login_safe")
+await server.query(q.CreateRole({
+  name: "login_safe",
+  privileges: [
+    {
+      resource: q.Index("user_by_email"),
+      actions: {
+        unrestricted_read: false,
+        read: true,
+        history_read: false
+      }
+    }
+  ],
+  membership: []
+})).catch(catchMe)
+
+console.log("Creating login_safe Function")
+await server.query(q.CreateFunction({
+  name: "login_safe",
+  role: q.Role("login_safe"),
+  body: q.Query(
+    q.Lambda(
+      ["email", "password"],
+      q.Login(q.Match(q.Index("user_by_email"), q.Var("email")), {
+        password: q.Var("password")
+      })
+    )
+  )
+})).catch(catchMe)
+
+
 console.log("Creating role: loged_admin")
 await server.query(q.CreateRole({
   name: "loged_admin",
@@ -60,14 +91,6 @@ await server.query(q.CreateRole({
       actions: {
         unrestricted_read: false,
         read: true,
-        history_read: false
-      }
-    },
-    {
-      resource: q.Index("user_by_email"),
-      actions: {
-        unrestricted_read: false,
-        read: false,
         history_read: false
       }
     },
@@ -129,19 +152,16 @@ await server.query(q.CreateRole({
         }
       },
       {
-        resource: q.Index("user_by_email"),
+        resource: q.Function("login_safe"),
         actions: {
-          unrestricted_read: false,
-          read: true,
-          history_read: false
+          call: true
         }
       }
     ],
     membership: []
 })).catch(catchMe)
 
-
-console.log(`Creating user ${emailAdmin}, with password:${passwordAdmin}`)
+console.log(`Creating user ${config.email}`)
 await server.query(
   q.Create(
     q.Collection("users"),
