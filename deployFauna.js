@@ -1,12 +1,10 @@
 var fauna = require('faunadb')
-var serverKey = require('./env/adminKey.js')
-var emailAdmin = "arthur@juchereau.com"
-var passwordAdmin = "test"
+var config = require('./env/bootstrap.js')
 
 
 var q = fauna.query
 
-var server = new fauna.Client({secret:serverKey})
+var server = new fauna.Client({secret:config.key})
 
 const catchMe = function(err){
   console.log(JSON.stringify(err, null, 1))
@@ -148,8 +146,8 @@ await server.query(
   q.Create(
     q.Collection("users"),
     {
-      data:{email:emailAdmin,admin:true},
-      credentials:{password:passwordAdmin}
+      data:{email:config.email,admin:true},
+      credentials:{password:config.password}
     }
   )
 )
