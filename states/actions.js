@@ -39,10 +39,12 @@ export default {
   setField: ({state,actions},{field,value}) => {
     state.activeForm[field] = value
 
-    //Check if filledUp
+    //Check if fields are filled
     if(state.activeForm.singleStep &&
       state.activeForm.nonResidential &&
+      state.activeForm.businessName &&
       state.activeForm.businessName !== '' &&
+      state.activeForm.businessAddress &&
       state.activeForm.businessAddress !== '' &&
       state.activeForm.owner &&
       state.activeForm.sidewalkFlat &&
@@ -53,9 +55,11 @@ export default {
         (state.activeForm.contactMe === "No")
       )
     ){
+      //All fields are properly filled
       setTimeout(()=>actions.completeForm(),0)
     }
     else{
+      //One or more field is Empty
       setTimeout(()=>actions.clearField(),0)
     }
   },
