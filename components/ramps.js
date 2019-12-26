@@ -10,7 +10,7 @@ export default () => {
   const {state,actions} = useOvermind()
   
   //Nothing to do here in /ramps if not loggedin
-  if(state.states[1][1]!=='SUCCESS'){
+  if(state.matches({login:{SUCCESS:false}})){
     Router.push('/')
   }
 
@@ -20,11 +20,10 @@ export default () => {
     //actions.fetchRamps()
   },[])
 
-  const activeState = state.states[2][1]
-  const isFetching = activeState === 'FETCHING'
-  const isEmpty = activeState === 'EMPTY'
-  const isDisplay = activeState === 'DISPLAY'
-  const isError = activeState === 'ERROR'
+  const isFetching = state.matches({ramps:{FETCHING:true}})
+  const isEmpty = state.matches({ramps:{EMPTY:true}})
+  const isDisplay = state.matches({ramps:{DISPLAY:true}})
+  const isError = state.matches({ramps:{ERROR:true}})
 
   return(
     <>

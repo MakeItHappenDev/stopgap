@@ -5,8 +5,7 @@ import styles from './form.module.scss'
 export default ()=> {
 
   const {state,actions} = useOvermind()
-  const activeState = state.states[0][1]
-  const isCompleted = activeState === 'COMPLETED'
+  //const isCompleted = state.matches({form:{COMPLETED:true}})
   
 
   return(
@@ -57,12 +56,10 @@ export default ()=> {
       <label>Email address</label>
       <Input  field="requestEmail"/>
 
-      {isCompleted && <>
       <nav>
-        <button>Save</button>
-        <button>Send</button>
+        <button disabled={!state.actions.saveForm}>Save</button>
+        <button disabled={!state.actions.sendForm}>Send</button>
       </nav>
-      </>}
 
 
     </main>

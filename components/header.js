@@ -9,10 +9,10 @@ import styles from './header.module.scss'
 export default () => {
   
   const {state,actions} = useOvermind()
-  const loginState = state.states[1][1]
-  const isModal = (loginState === 'SHOWN' || loginState === 'TRYING' || loginState === 'ERROR')
-  const isLogged = loginState === 'SUCCESS'
-  const isntLogged = loginState === 'HIDDEN'
+  const isLogged = state.matches({login:{SUCCESS:true}})
+  const isntLogged = state.matches({login:{HIDDEN:true}})
+  const isModal = !(isLogged || isntLogged)
+  
   return(
     <>
       {isModal && <>
