@@ -1,7 +1,30 @@
 import fauna from 'faunadb'
 import secretKey from '../env/faunakey'
+import PouchDB from 'pouchdb'
+
+import {defaultForm} from './state'
+import debounce from '../helpers/debounce'
+
+const formDB = new PouchDB('form',{auto_compaction: true})
 
 const q = fauna.query
+
+const saveForm = debounce(async (state)=>{
+  try{
+    const doc = await formDB.get('activeForm')
+    doc.form = JSON.stringify(state.activeForm)
+    await formDB.put(doc)
+  }
+  catch(e){
+    //Document not found
+    const myDoc = {
+      _id:'activeForm',
+      form:JSON.stringify(state.activeForm)
+    }
+    const response = await formDB.put(myDoc)
+    console.log("New db: ",response,JSON.stringify(e))
+  }
+},500)
 
 export default {
   //Login
@@ -36,6 +59,18 @@ export default {
   },
 
   //Form
+  resumeForm: async ({state,actions}) => {
+    //Load from pouchDB
+    try{
+      const form = await formDB.get('activeForm')
+      state.activeForm = JSON.parse(form.form)
+      actions.setField({})
+      return
+    }
+    catch(e){
+      return console.log(JSON.stringify(e),"No prior database")
+    }
+  },
   setField: ({state,actions},{field,value}) => {
     state.activeForm[field] = value
 
@@ -62,17 +97,18 @@ export default {
       //One or more field is Empty
       setTimeout(()=>actions.clearField(),0)
     }
+    saveForm(state)
   },
   clearField: () => {},
   completeForm: () => {},
-  saveForm: ({state}) => {
+  stashForm: ({state}) => {
 
   },
   sendForm: ({state}) => {
 
   },
   resetForm: ({state}) => {
-    state.activeForm = {}
+    state.activeForm = {...defaultForm}
   },
   sendAllSavedForms: ({state}) => {
 

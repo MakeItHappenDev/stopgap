@@ -2,6 +2,8 @@ import React from 'react'
 import { useOvermind } from '../states/index'
 
 import styles from './form.module.scss'
+import ImageSaver from './imageSaver'
+
 export default ()=> {
 
   const {state,actions} = useOvermind()
@@ -12,7 +14,11 @@ export default ()=> {
 
     <main className={styles.form}>
 
-      <nav><button disabled={!state.actions.resetForm} onClick={()=>actions.resetForm()}>Reset Form</button></nav>
+      <nav>
+        <button disabled={!state.actions.resetForm} onClick={()=>actions.resetForm()}>Reset Form</button>
+        <button disabled={!state.actions.resumeForm} onClick={()=>actions.resumeForm()}>Resume</button>
+
+      </nav>
       <h1>Tell us about an Ottawa business that could use a StopGap ramp.</h1>
       <p className={styles.full}>* mandatory</p>
       <label>Is the location inaccessible due to a single step?*</label>
@@ -34,7 +40,7 @@ export default ()=> {
       <h1>Add a photo or two.</h1>
       <p className={styles.full}>Be sure to show the step and entryway.</p>
       <div className={styles.uploadBox}>
-        <button>Upload</button>
+        <ImageSaver field="photos"/>
         
       </div>
 

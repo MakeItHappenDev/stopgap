@@ -1,14 +1,14 @@
 import fauna from 'faunadb'
 import secretKey from '../env/faunakey'
 
-const defaultForm = {
-  singleStep:null,
+export const defaultForm = {
+  photos:[],
 }
 
 export default {
   login: null,
   requests: [],
-  activeForm:{},
+  activeForm:{...defaultForm},
   errors:[],
   activeFaunaClient:new fauna.Client({secret:secretKey}),
 

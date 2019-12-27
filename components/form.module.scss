@@ -9,6 +9,26 @@
   > label,h1,div,nav {
     grid-column-start:1;
     grid-column-end: 3;
+    &.uploadBox{
+      >input {
+        display:block;
+      }
+      > figure {
+        display:inline-block;
+        max-width:100%;
+        max-height: 6rem;
+        >img {
+          display:block;
+          max-width:100%;
+          max-height: 4rem;
+        }
+        > button{
+          width:100%;
+          display:block;
+        }
+        
+      }
+    }
   }
   > input {
     border:1px solid black;

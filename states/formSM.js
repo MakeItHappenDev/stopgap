@@ -4,7 +4,8 @@ export default {
     EMPTY:{
       on:{
         setField:'FILLING',
-        sendAllSavedForms:'SENDING'
+        sendAllSavedForms:'SENDING',
+        resumeForm:'EMPTY'
       }
     },
     FILLING:{
@@ -18,7 +19,8 @@ export default {
       on:{
         clearField:'FILLING',
         setField:'COMPLETED',
-        saveForm:'SAVING',
+        resetForm:'EMPTY',
+        stashForm:'SAVING',
         sendForm:'SENDING',
       }
     },
@@ -30,7 +32,7 @@ export default {
     },
     SAVING:{
       on:{
-        saveForm:'EMPTY'
+        saved:'EMPTY'
       }
     }
   }

@@ -3,6 +3,12 @@
 #faunakeys
 /env
 
+#pouchDB
+/photos
+/savedForms
+/form
+/imageSaver
+
 # dependencies
 /node_modules
 
