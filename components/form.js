@@ -12,6 +12,7 @@ export default ()=> {
 
     <main className={styles.form}>
 
+      <nav><button disabled={!state.actions.resetForm} onClick={()=>actions.resetForm()}>Reset Form</button></nav>
       <h1>Tell us about an Ottawa business that could use a StopGap ramp.</h1>
       <p className={styles.full}>* mandatory</p>
       <label>Is the location inaccessible due to a single step?*</label>

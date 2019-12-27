@@ -24,6 +24,8 @@
       grid-column-end: 3;
     }
     &.answer{
+      user-select: none;
+      -moz-user-select: none;
       border:1px solid black;
       padding:0.5rem;
       justify-self: left;
