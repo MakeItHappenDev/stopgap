@@ -8,8 +8,7 @@ import debounce from '../helpers/debounce'
 const formDB = new PouchDB('form',{auto_compaction: true})
 
 const q = fauna.query
-
-const saveForm = debounce(async (state)=>{
+const instantSaveForm = async (state)=>{
   try{
     const doc = await formDB.get('activeForm')
     doc.form = JSON.stringify(state.activeForm)
@@ -24,7 +23,8 @@ const saveForm = debounce(async (state)=>{
     const response = await formDB.put(myDoc)
     console.log("New db: ",response,JSON.stringify(e))
   }
-},500)
+}
+const saveForm = debounce(instantSaveForm,500)
 
 export default {
   //Login
@@ -64,8 +64,9 @@ export default {
     try{
       const form = await formDB.get('activeForm')
       state.activeForm = JSON.parse(form.form)
-      actions.setField({})
-      return
+      if(form.form !== JSON.stringify(defaultForm)){
+        actions.setField({})
+      }
     }
     catch(e){
       return console.log(JSON.stringify(e),"No prior database")
@@ -109,6 +110,7 @@ export default {
   },
   resetForm: ({state}) => {
     state.activeForm = {...defaultForm}
+    instantSaveForm(state)
   },
   sendAllSavedForms: ({state}) => {
 

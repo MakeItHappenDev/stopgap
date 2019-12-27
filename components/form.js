@@ -1,13 +1,25 @@
-import React from 'react'
+import React,{useEffect} from 'react'
 import { useOvermind } from '../states/index'
 
 import styles from './form.module.scss'
 import ImageSaver from './imageSaver'
+import debounce from '../helpers/debounce'
+
+
 
 export default ()=> {
 
+
   const {state,actions} = useOvermind()
-  //const isCompleted = state.matches({form:{COMPLETED:true}})
+  const isEmpty = state.matches({form:{EMPTY:true}})
+
+  useEffect(()=>{
+    if(isEmpty){
+      //On loading, try to see if there's a pending form on the way
+      const resume = debounce(actions.resumeForm,1000,true)
+      resume()
+    }
+  },[])
   
 
   return(
