@@ -15,6 +15,7 @@ html,body{
   grid-template:
   "header header" auto
   "...... ......" 1fr
+  "saved  saved" auto
   "JSON   page  " auto
   "...... ......" 1fr
   "footer footer" auto
@@ -27,6 +28,9 @@ html,body{
   }
   > main {
     grid-area: page;
+  }
+  >aside {
+    grid-area: saved;
   }
   > section {
     grid-area: JSON;

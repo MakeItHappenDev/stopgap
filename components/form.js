@@ -3,7 +3,6 @@ import { useOvermind } from '../states/index'
 
 import styles from './form.module.scss'
 import ImageSaver from './imageSaver'
-import debounce from '../helpers/debounce'
 
 
 
@@ -16,8 +15,7 @@ export default ()=> {
   useEffect(()=>{
     if(isEmpty){
       //On loading, try to see if there's a pending form on the way
-      const resume = debounce(actions.resumeForm,1000,true)
-      resume()
+      actions.resumeForm()
     }
   },[])
   
@@ -28,8 +26,6 @@ export default ()=> {
 
       <nav>
         <button disabled={!state.actions.resetForm} onClick={()=>actions.resetForm()}>Reset Form</button>
-        <button disabled={!state.actions.resumeForm} onClick={()=>actions.resumeForm()}>Resume</button>
-
       </nav>
       <h1>Tell us about an Ottawa business that could use a StopGap ramp.</h1>
       <p className={styles.full}>* mandatory</p>
