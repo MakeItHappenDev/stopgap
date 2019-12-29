@@ -1,21 +1,23 @@
 .header{
   padding:1rem;
-  background-color:#000030;
+  background-color:var(--BGaccent);
   color:white;
   display:grid;
   grid-template: 
-  "... title link  login ..." auto
-  /1fr 700px 100px 200px 1fr;
+  "... title nav ..." auto
+  /1fr 700px 300px 1fr;
+  align-items: center;
   > h1 {
     grid-area: title;
     cursor:pointer;
   }
-  > button {
-    grid-area: login;
-  }
-  > a {
-    display:block;
-    grid-area: link;
+  > nav {
+    grid-area: nav;
+    text-align: right;
+    > a {
+      display:inline-block;
+      grid-area: link;
+    }
   }
 
 }

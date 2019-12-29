@@ -40,7 +40,9 @@ const Heading = (props) => {
   return(
     <header className={styles.header}>
       <Link href="/"><h1>StopGap</h1></Link>
-      {props.children}
+      <nav>
+        {props.children}
+      </nav>
     </header>
   )
 }

@@ -31,7 +31,8 @@
     }
   }
   > input {
-    border:1px solid black;
+    border:1px solid var(--BGbutton);
+    color:var(--BGbutton);
     padding:0.5rem;
     display:block;
     width:100%;
@@ -46,14 +47,14 @@
     &.answer{
       user-select: none;
       -moz-user-select: none;
-      border:1px solid black;
+      border:1px solid var(--BGbutton);
       padding:0.5rem;
       justify-self: left;
       cursor:pointer;
     }
     &.selected{
-      background-color:#303030;
-      color:white;
+      background-color:var(--BGbutton);
+      color:var(--Cbutton);
     }
   }
 }

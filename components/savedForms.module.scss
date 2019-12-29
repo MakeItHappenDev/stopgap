@@ -1,0 +1,17 @@
+.savedForm {
+  background-color:#a3a3ea;
+  padding:0.5rem;
+  color:white;
+  display:grid;
+  grid-template: 
+  ".... text nav ..." auto
+  / 1fr 700px 300px 1fr;
+  align-items: center;
+  > p {
+    grid-area: text;
+  }
+  > nav {
+    grid-area: nav;
+    text-align: right;
+  }
+}

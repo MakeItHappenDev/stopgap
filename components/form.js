@@ -72,7 +72,7 @@ export default ()=> {
       <Input  field="requestEmail"/>
 
       <nav>
-        <button disabled={!state.actions.saveForm}>Save</button>
+        <button disabled={!state.actions.stashForm}>Save</button>
         <button disabled={!state.actions.sendForm}>Send</button>
       </nav>
 

@@ -6,13 +6,14 @@
   z-index: 3;
   > li {
     list-style: none;
-    background-color:#400000;
-    color:white;
+    background-color:var(--BGerror);
+    color:var(--Cerror);
     margin-top:0.5rem;
     padding:0.5rem;
     &:last-child{
       cursor:pointer;
-      background-color: #004000;
+      background-color: var(--BGclearError);
+      color:var(--CclearError);
       text-align: center;
     }
   }

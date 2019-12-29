@@ -7,6 +7,41 @@ html,body{
   font-size: 1rem;
   box-sizing: border-box;
 }
+:root{
+  --BGbutton:#4f8c8e;
+  --Cbutton:white;
+  --BGbuttonDisabled:#bfbfbf;
+  --CbuttonDisabled:white;
+  --BGaccent:#973f7d;
+  --BGmild:#a3a3ea;
+  --BGerror:#400000;
+  --Cerror:white;
+  --BGclearError:#004000;
+  --CclearError:white;
+  --BGlogin:#9c7ba8;
+  --Clogin:white;
+  --BGdropback:rgba(0,0,0,0.5);
+}
+
+button{
+  border:none;
+  color:var(--Cbutton);
+  border:1px solid var(--BGbutton);
+  background-color:var(--BGbutton);
+  padding:0.5rem;
+  outline:none;
+  margin-right:0.5rem;
+  cursor:pointer;
+  &:last-child{
+    margin-right:0;
+  }
+  &:disabled{
+    cursor: not-allowed;
+    color:var(--CbuttonDisabled);
+    border:1px solid var(--BGbutton);
+    background-color:var(--BGbuttonDisabled);
+  }
+}
 
 .container {
   display:relative;

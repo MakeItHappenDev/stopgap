@@ -1,7 +1,9 @@
 .loginModal {
   padding:1rem;
-  background-color:#c0c0c0;
-  box-shadow: 0 0 10px black;
+  background-color:var(--BGlogin);
+  color:var(--Clogin);
+  box-shadow: 0 0 1000px 30px black;
+  border:1px solid #f0f0f0;
   position:fixed;
   top:50%;
   left:50%;
@@ -16,7 +18,7 @@
 }
 
 .background {
-  background-color:rgba(0,0,0,0.5);
+  background-color:var(--BGdropback);
   position:fixed;
   top:0;
   bottom:0;
