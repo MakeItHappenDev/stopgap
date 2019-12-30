@@ -4,8 +4,11 @@ import PouchDB from 'pouchdb'
 
 import {defaultForm} from './state'
 import debounce from '../helpers/debounce'
+import removeItem from '../helpers/removeItem'
 
 const formDB = new PouchDB('form',{auto_compaction: true})
+const imageDB = new PouchDB('photos',{auto_compaction: true})
+
 
 const q = fauna.query
 const instantSaveForm = async (state)=>{
@@ -109,6 +112,10 @@ export default {
 
   },
   resetForm: ({state}) => {
+    state.activeForm.photos.forEach(p=>{
+      //Remove each photos from the pouchDB
+      removeItem(imageDB,p)
+    })
     state.activeForm = {...defaultForm}
     instantSaveForm(state)
   },

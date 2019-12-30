@@ -3,6 +3,7 @@ import PouchDB from 'pouchdb'
 
 import {useOvermind} from '../states/index'
 const db = new PouchDB('photos',{auto_compaction: true})
+import removeItem from '../helpers/removeItem'
 
 const storeImage = async (image) => {
 
@@ -87,8 +88,7 @@ const DisplayImage = (props) => {
     const id = state.activeForm[props.field][props.index]
 
     //Destroy pouchDB image
-    db.get(id).then(function(doc) {
-      return db.remove(doc);})
+    removeItem(db,id);
 
     //Save new state
     const newPhotos = state.activeForm[props.field].filter(p=>p !== id)
