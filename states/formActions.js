@@ -77,7 +77,7 @@ export default {
   },
   sendForm: async ({state,actions,effects}) => {
 
-    //TODO wrap in an async function to delay faunaDB after cloudinary ingested the images
+    //TODO Check why it only upload 1 picture, and why imagesURL aren't wiped
     const asyncRun = async () => {
       console.log("sending images to Cloudinary")
       //Send images first, then the rest
