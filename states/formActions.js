@@ -10,17 +10,17 @@ import removeItem from '../helpers/removeItem'
 const formDB = new PouchDB('form',{auto_compaction: true})
 const imageDB = new PouchDB('photos',{auto_compaction: true})
 
-const instantSaveForm = async (state)=>{
+const instantSaveForm = async (activeForm)=>{
   try{
     const doc = await formDB.get('activeForm')
-    doc.form = JSON.stringify(state.activeForm)
+    doc.form = JSON.stringify(activeForm)
     await formDB.put(doc)
   }
   catch(e){
     //Document not found
     const myDoc = {
       _id:'activeForm',
-      form:JSON.stringify(state.activeForm)
+      form:JSON.stringify(activeForm)
     }
     const response = await formDB.put(myDoc)
     console.log("New db: ",response,JSON.stringify(e))
@@ -68,7 +68,7 @@ export default {
       //One or more field is Empty
       setTimeout(()=>actions.clearField(),0)
     }
-    saveForm(state)
+    saveForm(state.activeForm)
   },
   clearField: () => {},
   completeForm: () => {},
@@ -81,7 +81,7 @@ export default {
     const asyncRun = async () => {
       console.log("sending images to Cloudinary")
       //Send images first, then the rest
-      await asyncForEach(state.activeForm.photos, async photo=>{
+      await asyncForEach([...state.activeForm.photos], async photo=>{
         //fetch photo + build fake form
         const blob = await imageDB.getAttachment(photo, 'picture')
         console.log(blob)
@@ -131,15 +131,15 @@ export default {
       //Remove each photos from the pouchDB
       removeItem(imageDB,p)
     })
-    state.activeForm = {...defaultForm}
-    instantSaveForm(state)
+    state.activeForm = JSON.parse(JSON.stringify(defaultForm))
+    instantSaveForm(state.activeForm)
   },
   sendAllSavedForms: ({state}) => {
 
   },
   successSendForm: ({state}) => {
-    state.activeForm = {...defaultForm}
-    instantSaveForm(state)
+    state.activeForm = JSON.parse(JSON.stringify(defaultForm))
+    instantSaveForm(state.activeForm)
   },
   failSendForm: ({state}) => {
 
