@@ -4,8 +4,8 @@
   color:white;
   display:grid;
   grid-template: 
-  "... title ..... ..." auto
-  /1fr 800px 200px 1fr;
+  "title" auto
+  /1fr;
   > h1 {
     grid-area: title;
   }

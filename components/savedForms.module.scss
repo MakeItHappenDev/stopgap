@@ -4,8 +4,8 @@
   color:white;
   display:grid;
   grid-template: 
-  ".... text nav ..." auto
-  / 1fr 700px 300px 1fr;
+  "text nav" auto
+  / 1fr auto;
   align-items: center;
   > p {
     grid-area: text;

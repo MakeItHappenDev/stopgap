@@ -48,13 +48,13 @@ button{
   min-height: 100vh;
   display:grid;
   grid-template:
-  "header header" auto
-  "saved  saved" auto
-  "...... ......" 1fr
-  "JSON   page  " auto
-  "...... ......" 1fr
-  "footer footer" auto
-  / 1fr   1fr;
+  "header" auto
+  "saved" auto
+  "page  " auto
+  "JSON" auto
+  "..." 1fr
+  "footer" auto
+  / 1fr;
   >header {
     grid-area:header;
   }

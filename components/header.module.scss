@@ -4,8 +4,8 @@
   color:white;
   display:grid;
   grid-template: 
-  "... title nav ..." auto
-  /1fr 700px 300px 1fr;
+  "title nav" auto
+  /1fr auto;
   align-items: center;
   > h1 {
     grid-area: title;
