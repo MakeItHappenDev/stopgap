@@ -27,7 +27,7 @@ export default {
     SENDING:{
       on:{
         successSendForm:'EMPTY',
-        failSendForm:'EMPTY'
+        failSendForm:'COMPLETED'
       }
     },
     SAVING:{

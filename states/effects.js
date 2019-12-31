@@ -19,6 +19,15 @@ export default {
         return new fauna.Client({secret:response.secret})
       }).catch((err)=>({error:JSON.stringify(err)}))
   },
-  sendForm: async (form) => {
+  sendForm: async ({form,client}) => {
+    return await client.query(
+      q.Create(
+        q.Collection('ramps'),
+          { data: { ...form } 
+        },
+      )
+    )
+    .then(response => response)
+    .catch(err => ({error:JSON.stringify(err)}))
   }
 }

@@ -3,6 +3,7 @@ import secretKey from '../env/faunakey'
 
 export const defaultForm = {
   photos:[],
+  imagesURL:[]
 }
 
 export default {

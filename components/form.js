@@ -73,7 +73,7 @@ export default ()=> {
 
       <nav>
         <button disabled={!state.actions.stashForm}>Save</button>
-        <button disabled={!state.actions.sendForm}>Send</button>
+        <button onClick={()=>actions.sendForm()} disabled={!state.actions.sendForm}>Send</button>
       </nav>
 
 

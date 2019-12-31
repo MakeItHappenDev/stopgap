@@ -36,16 +36,21 @@ const getImages = async (photos) => {
 
   //If no photo, bypass logic
   if(!photos || photos.length === 0){
+    //console.log("return empty array")
     return []
   }
   //Fetch all documents having ID of the activeForm
   const allDocs = await db.allDocs({include_docs: true, keys:photos})
   //Target documents, to get IDs of the photos
   const mappedDocs = allDocs.rows.map(r=>r.doc)
+  console.log(mappedDocs)
   let attachments = []
   for(var i=0;i<mappedDocs.length;i++){
-    const blob = await db.getAttachment(mappedDocs[i]._id, 'picture')
-    attachments.push(URL.createObjectURL(blob))
+    //MappedDocs can be null
+    if(mappedDocs[i]){
+      const blob = await db.getAttachment(mappedDocs[i]._id, 'picture')
+      attachments.push(URL.createObjectURL(blob))
+    }
   }
   return attachments
 }
@@ -67,7 +72,7 @@ export default (props) =>{
       setImages(await getImages(photos))
     }
     showBlobs(state.activeForm['photos'])
-    },[state.activeForm.photos])
+  },[state.activeForm.photos])
 
 
 
@@ -75,7 +80,8 @@ export default (props) =>{
   return(
     <>
         <input type="file" onChange={e=>pouchifyImage(e)}/>
-        {images.map((image,i)=><DisplayImage image={image} index={i} field={props.field} key={`image-${state.activeForm.photos[i]}`}/>)}
+        {state.activeForm.photos.length > 0 && images.map((image,i)=><DisplayImage image={image} index={i} field={props.field} key={`image-${image}`}/>)}
+        {state.activeForm.imagesURL.map((image,i)=><DisplayImage disabled={true} image={image} key={`image-${state.activeForm.imagesURL[i]}`}/>)}
         
     </>
   )
@@ -97,7 +103,7 @@ const DisplayImage = (props) => {
   return (
     <figure>
       <img src={props.image}  />
-      <button onClick={()=>removeImage()}>X</button>
+      {!props.disabled && <button onClick={()=>removeImage()}>X</button>}
     </figure>
   ) 
 }
