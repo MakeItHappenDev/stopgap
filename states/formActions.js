@@ -77,7 +77,7 @@ export default {
   },
   sendForm: async ({state,actions,effects}) => {
 
-    //TODO Check why it only upload 1 picture, and why imagesURL aren't wiped
+    //TODO check why imagesURL aren't wiped
     const asyncRun = async () => {
       console.log("sending images to Cloudinary")
       //Send images first, then the rest
