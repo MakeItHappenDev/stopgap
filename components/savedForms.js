@@ -8,7 +8,7 @@ import styles from './savedForms.module.scss'
 
 const checkForms = async () => {
   const doc = await savedDB.allDocs()
-  console.log(doc)
+  //console.log(doc)
   return 0
 }
 

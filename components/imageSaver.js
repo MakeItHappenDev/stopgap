@@ -43,7 +43,7 @@ const getImages = async (photos) => {
   const allDocs = await db.allDocs({include_docs: true, keys:photos})
   //Target documents, to get IDs of the photos
   const mappedDocs = allDocs.rows.map(r=>r.doc)
-  console.log(mappedDocs)
+  //console.log(mappedDocs)
   let attachments = []
   for(var i=0;i<mappedDocs.length;i++){
     //MappedDocs can be null
