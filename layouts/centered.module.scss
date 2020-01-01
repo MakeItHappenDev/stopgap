@@ -42,32 +42,33 @@ button{
     background-color:var(--BGbuttonDisabled);
   }
 }
-
-.container {
-  display:relative;
-  min-height: 100vh;
-  display:grid;
-  grid-template:
-  "header" auto
-  "saved" auto
-  "page  " auto
-  "JSON" auto
-  "..." 1fr
-  "footer" auto
-  / 1fr;
-  >header {
-    grid-area:header;
-  }
-  > footer {
-    grid-area:footer;
-  }
-  > main {
-    grid-area: page;
-  }
-  >aside {
-    grid-area: saved;
-  }
-  > section {
-    grid-area: JSON;
+:global {
+  #__next {
+    display:relative;
+    min-height: 100vh;
+    display:grid;
+    grid-template:
+    "header" auto
+    "saved" auto
+    "page  " auto
+    "JSON" auto
+    "..." 1fr
+    "footer" auto
+    / 1fr;
+    >header {
+      grid-area:header;
+    }
+    > footer {
+      grid-area:footer;
+    }
+    > main {
+      grid-area: page;
+    }
+    >aside {
+      grid-area: saved;
+    }
+    > section {
+      grid-area: JSON;
+    }
   }
 }

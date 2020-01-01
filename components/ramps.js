@@ -28,10 +28,14 @@ export default () => {
   return(
     <>
       {isDisplay && <>
-        <button onClick={()=>actions.fetchRamps()}>refetch</button>
-        <ul>
-          {JSON.stringify(state.fetchedRamps)}
-        </ul>
+        <main>
+          <button onClick={()=>actions.fetchRamps()}>refetch</button>
+         {state.fetchedRamps.map((r,i)=>
+         <article key={`ramp-${i}`}>
+           {JSON.stringify(r,null,1)}
+         </article>
+         )}
+        </main>
       </>}
       {isEmpty && <>
         <button onClick={()=>actions.fetchRamps()}>refetch</button>
@@ -40,7 +44,7 @@ export default () => {
         <p>Currently Fetching</p>
       </>}
       {isError && <>
-        <button onClick={()=>actions.fetchRamps()}>refetch</button>
+        <button onClick={()=>actions.fetchRamps()}>Error refetch</button>
       </>}
     </>
   )

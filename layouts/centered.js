@@ -7,13 +7,13 @@ import styles from './centered.module.scss'
 
 export default (props) => {
   return(
-    <article className={styles.container}>
+    <>
       <Errors/>
       <Header/>
       <>
         {props.children}
       </>
       <Footer />
-    </article>
+    </>
   )
 }
