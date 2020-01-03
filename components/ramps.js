@@ -3,6 +3,7 @@ import Router from 'next/router'
 
 
 import { useOvermind } from '../states/index'
+import styles from './ramps.module.scss'
 
 
 export default () => {
@@ -31,9 +32,7 @@ export default () => {
         <main>
           <button onClick={()=>actions.fetchRamps()}>refetch</button>
          {state.fetchedRamps.map((r,i)=>
-         <article key={`ramp-${i}`}>
-           {JSON.stringify(r,null,1)}
-         </article>
+           <DisplayRamp {...r} key={`ramp-${i}`}/>
          )}
         </main>
       </>}
@@ -47,5 +46,25 @@ export default () => {
         <button onClick={()=>actions.fetchRamps()}>Error refetch</button>
       </>}
     </>
+  )
+}
+
+const DisplayRamp = (props) => {
+
+  return(
+    <article className={styles.ramp}>
+      <p>Business name : {props.businessName}</p>
+      <p>business address: {props.businessAddress}</p>
+      {props.imagesURL && props.imagesURL.map(photo=>(
+        <figure><img src={photo} /></figure>
+      ))}
+      <p className={props.singleStep === "Yes" ? styles.correct:styles.false}>Single Step</p>
+      <p className={props.nonResidential === "Yes" ? styles.correct:styles.false}>Non Residential</p>
+      <p className={props.Owner === "Yes" ? styles.correct:styles.false}>Owner</p>
+      <p className={props.sidewalkFlat === "Yes" ? styles.correct:styles.false}>Sidewalk is flat</p>
+      <p className={props.wideStep === "Yes" ? styles.correct:styles.false}>Wide step</p>
+      <p className={props.preperHeightStep === "Yes" ? styles.correct:styles.false}>Proper height</p>
+      <p className={props.contactMe === "Yes" ? styles.correct:styles.false}>Contact me : {props.email}</p>
+    </article>
   )
 }
