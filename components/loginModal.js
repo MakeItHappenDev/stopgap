@@ -12,7 +12,7 @@ export default () => {
     <>
       <div className={styles.background} onClick={()=>actions.exitLoginModal()}></div>
       <nav className={styles.loginModal}>
-        <h1>Hello</h1>
+        <p>This section is restricted, only authorized people are allowed to see forms</p>
         <input value={email} onChange={e=>setEmail(e.target.value)}/>
         <input value={password} type="password" onChange={e=>setPassword(e.target.value)}/>
         <button onClick={()=>actions.tryLogin({email,password})}>login</button>

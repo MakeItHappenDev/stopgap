@@ -1,6 +1,7 @@
 html,body{
   height:100%;
   margin:0;
+  background-color: #f0f0f0;
 }
 * {
   margin:0;
@@ -12,15 +13,17 @@ html,body{
   --Cbutton:white;
   --BGbuttonDisabled:#bfbfbf;
   --CbuttonDisabled:white;
+  --BGinput:white;
   --BGaccent:#973f7d;
   --BGmild:#a3a3ea;
   --BGerror:#400000;
   --Cerror:white;
   --BGclearError:#004000;
   --CclearError:white;
-  --BGlogin:#9c7ba8;
+  --BGlogin:#973f7d;
   --Clogin:white;
   --BGdropback:rgba(0,0,0,0.5);
+  --newmorphism: 0.25rem 0.25rem 0.5rem 0rem rgba(0,0,0,0.5), 0.25rem 0.25rem 0.5rem 0rem rgba(255,255,255,0.5) inset;
 }
 
 button{
@@ -28,6 +31,8 @@ button{
   color:var(--Cbutton);
   border:1px solid var(--BGbutton);
   background-color:var(--BGbutton);
+  box-shadow: var(--newmorphism);
+  border-radius: 0.5rem;
   padding:0.5rem;
   outline:none;
   margin-right:0.5rem;

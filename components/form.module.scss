@@ -35,12 +35,14 @@
   }
   > input {
     border:1px solid var(--BGbutton);
+    background-color: var(--BGinput);
     color:var(--BGbutton);
     padding:0.5rem;
     display:block;
     width:100%;
     grid-column-start:1;
     grid-column-end: 3;
+    box-shadow: var(--newmorphism);
   }
   > p {
     &.full{
@@ -49,11 +51,13 @@
     }
     &.answer{
       user-select: none;
+      background-color: var(--BGinput);
       -moz-user-select: none;
       border:1px solid var(--BGbutton);
       padding:0.5rem;
       justify-self: left;
       cursor:pointer;
+      box-shadow: var(--newmorphism);
     }
     &.selected{
       background-color:var(--BGbutton);
