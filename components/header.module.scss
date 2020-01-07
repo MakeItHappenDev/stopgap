@@ -1,5 +1,5 @@
 .header{
-  padding:1rem;
+  padding:2rem 1rem;
   background-color:var(--BGaccent);
   color:white;
   display:grid;
@@ -9,6 +9,7 @@
   align-items: center;
   > h1 {
     grid-area: title;
+    font-size: 1.5rem;
     cursor:pointer;
   }
   > nav {
