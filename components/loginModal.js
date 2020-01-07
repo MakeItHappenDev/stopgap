@@ -11,12 +11,14 @@ export default () => {
   return(
     <>
       <div className={styles.background} onClick={()=>actions.exitLoginModal()}></div>
-      <nav className={styles.loginModal}>
-        <p>This section is restricted, only authorized people are allowed to see forms</p>
-        <input value={email} onChange={e=>setEmail(e.target.value)}/>
-        <input value={password} type="password" onChange={e=>setPassword(e.target.value)}/>
-        <button onClick={()=>actions.tryLogin({email,password})}>login</button>
-      </nav>
+      <div className={styles.loginModal}>
+        <nav onClick={e=>e.stopPropagation()}>
+          <p>This section is restricted, only authorized people are allowed to see forms</p>
+          <input value={email} onChange={e=>setEmail(e.target.value)}/>
+          <input value={password} type="password" onChange={e=>setPassword(e.target.value)}/>
+          <button onClick={()=>actions.tryLogin({email,password})}>login</button>
+        </nav>
+      </div>
     </>
   )
 }

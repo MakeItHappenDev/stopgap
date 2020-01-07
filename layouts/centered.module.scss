@@ -60,6 +60,17 @@ button{
     "..." 1fr
     "footer" auto
     / 1fr;
+    @media screen AND (min-width:1024px){
+      grid-template:
+      "header header header" auto
+      "saved saved saved" auto
+      "..... page  ..." auto
+      "..... JSON ....." auto
+      "... .... ....." 1fr
+      "footer footer footer" auto
+      / 1fr 1000px 1fr;
+      
+    }
     >header {
       grid-area:header;
     }

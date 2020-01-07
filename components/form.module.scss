@@ -30,6 +30,13 @@
       }
     }
   }
+  > h1 {
+    margin-top:3rem;
+    font-size: 1.4rem;
+    &:first-of-type{
+      margin-top: 0;
+    }
+  }
   > nav {
     text-align: right;
   }
