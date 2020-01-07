@@ -5,10 +5,10 @@ export default () => {
   
   const {state} = useOvermind()
   return(
-    <section>
+    <aside>
       <pre>{JSON.stringify(state.states,null,1)}</pre>
       <pre>{JSON.stringify(state.activeForm,null,1)}</pre>
       <pre>{JSON.stringify(state.actions,null,1)}</pre>
-    </section>
+    </aside>
   )
 }

@@ -9,6 +9,7 @@ import removeItem from '../helpers/removeItem'
 
 const formDB = new PouchDB('form',{auto_compaction: true})
 const imageDB = new PouchDB('photos',{auto_compaction: true})
+const saveDB = new PouchDB('savedForms',{auto_compaction: true})
 
 const instantSaveForm = async (activeForm)=>{
   try{
@@ -72,9 +73,25 @@ export default {
   },
   clearField: () => {},
   completeForm: () => {},
-  stashForm: ({state}) => {
+  stashForm: async ({state,actions}) => {
+    try{
 
+      const id = `${state.activeForm.businessName} / ${state.activeForm.businessAddress} / ${new Date().toISOString()}`
+      const myDoc = {
+        _id:id,
+        form:JSON.stringify(state.activeForm)
+      }
+      await saveDB.put(myDoc)
+      state.savedForms.push(id)
+      state.activeForm = JSON.parse(JSON.stringify(defaultForm))
+      instantSaveForm(state.activeForm)
+      actions.saved()
+    }
+    catch(e){
+      console.error(e)
+    }
   },
+  saved : () => {},
   sendForm: async ({state,actions,effects}) => {
 
     //TODO check why imagesURL aren't wiped

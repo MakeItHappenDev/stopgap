@@ -10,6 +10,7 @@ export default {
   login: null,
   requests: [],
   activeForm:{...defaultForm},
+  savedForms:[],
   errors:[],
   activeFaunaClient:new fauna.Client({secret:secretKey}),
 

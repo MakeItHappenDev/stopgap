@@ -2,16 +2,4 @@
   background-color:#a3a3ea;
   padding:0.5rem;
   color:white;
-  display:grid;
-  grid-template: 
-  "text nav" auto
-  / 1fr auto;
-  align-items: center;
-  > p {
-    grid-area: text;
-  }
-  > nav {
-    grid-area: nav;
-    text-align: right;
-  }
 }
