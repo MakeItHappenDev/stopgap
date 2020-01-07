@@ -1,45 +1,35 @@
 .loginModal {
-  position: fixed;
-  top:0;
-  bottom:0;
-  left:0;
-  right:0;
-  display:grid;
-  justify-content: center;
-  align-content: center;
-  pointer-events: none;
-  z-index: 2;
-  > nav {
-    pointer-events: auto;
-    background-color:var(--BGlogin);
-    color:var(--Clogin);
-    box-shadow: var(--newmorphism);
-    max-width:75vw;
-    padding:1rem;
-    border-radius: 1rem;
-    @media screen AND (min-width:400px){
-      border-radius: 3rem;
-      padding:3rem;
-    }
-    > p {
-      margin-bottom: 1rem;
-    }
-    > input {
-      display:block;
-      padding:0.5rem;
-      margin-bottom: 0.5rem;
-      width:100%;
-    }
+  grid-column: 1 / -1;
+  grid-row: 1 / -1;
+  z-index:11;
+  justify-self: center;
+  align-self: center;
+  pointer-events: auto;
+  background-color:var(--BGlogin);
+  color:var(--Clogin);
+  box-shadow: var(--newmorphism);
+  max-width:75vw;
+  padding:1rem;
+  border-radius: 1rem;
+  @media screen AND (min-width:400px){
+    border-radius: 3rem;
+    padding:3rem;
+  }
+  > p {
+    margin-bottom: 1rem;
+  }
+  > input {
+    display:block;
+    padding:0.5rem;
+    margin-bottom: 0.5rem;
+    width:100%;
   }
 }
 
 .background {
-  background-color:var(--BGdropback);
-  position:fixed;
-  top:0;
-  bottom:0;
-  left:0;
-  right:0;
-  z-index: 1;
+  grid-column: 1 / -1;
+  grid-row: 1 / -1;
+  z-index: 10;
+  background-color:rgba(0,0,0,0.5);
   cursor:pointer;
 }

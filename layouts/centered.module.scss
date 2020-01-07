@@ -1,7 +1,6 @@
 html,body{
-  height:100%;
   margin:0;
-  background-color: #f0f0f0;
+  background-color: var(--BGbody);
 }
 * {
   margin:0;
@@ -9,6 +8,8 @@ html,body{
   box-sizing: border-box;
 }
 :root{
+  --BGbody:#f0f0f0;
+  --BGpage:#f6f6f6;
   --BGbutton:#4f8c8e;
   --Cbutton:white;
   --BGbuttonDisabled:#bfbfbf;
@@ -50,41 +51,50 @@ button{
 :global {
   #__next {
     display:relative;
-    min-height: 100vh;
     display:grid;
+    min-height:100vh;
     grid-template:
     "header" auto
     "saved" auto
     "page  " auto
-    "JSON" auto
-    "..." 1fr
-    "footer" auto
+    "... .... ....." minmax(1rem,1fr)
     / 1fr;
     @media screen AND (min-width:1024px){
       grid-template:
-      "header header header" auto
-      "saved saved saved" auto
+      "topLeft header topRight" auto
+      "topLeft saved topRight" auto
+      "topLeft page  topRight" 5rem
       "..... page  ..." auto
-      "..... JSON ....." auto
-      "... .... ....." 1fr
-      "footer footer footer" auto
+      "... .... ....." minmax(1rem,1fr)
       / 1fr 1000px 1fr;
-      
+
+      @for $i from 1 through 4{
+
+      }
+      &:after{
+        content: " ";
+        background-color: var(--BGaccent);
+        grid-area: topRight;
+      }
+      &:before{
+        content: " ";
+        background-color: var(--BGaccent);
+        grid-area: topLeft;
+      }
     }
     >header {
       grid-area:header;
     }
-    > footer {
-      grid-area:footer;
-    }
     > main {
       grid-area: page;
+      background-color: var(--BGpage);
+      box-shadow: var(--newmorphism);
+      z-index: 2;
     }
     >aside {
       grid-area: saved;
-    }
-    > section {
-      grid-area: JSON;
+      box-shadow: var(--newmorphism);
+      z-index: 2;
     }
   }
 }
