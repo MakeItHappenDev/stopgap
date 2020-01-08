@@ -43,6 +43,23 @@ export default {
       //return console.log(JSON.stringify(e),"No prior database")
     }
   },
+  reloadForm: async ({state,actions},id) => {
+    try{
+      const form = await saveDB.get(id)
+      state.activeForm = JSON.parse(form.form)
+      if(form.form !== JSON.stringify(defaultForm)){
+        actions.setField({})
+        instantSaveForm(state.activeForm)
+        //Should always be the case for a savedForm, so we can delete it here
+        await saveDB.remove(form)
+        await actions.savedFormLookup()
+      }
+    }
+    catch(e){
+      actions.addError(e)
+      //return console.log(JSON.stringify(e),"No prior database")
+    }
+  },
   setField: ({state,actions},{field,value}) => {
     state.activeForm[field] = value
 
@@ -86,8 +103,10 @@ export default {
       state.activeForm = JSON.parse(JSON.stringify(defaultForm))
       instantSaveForm(state.activeForm)
       actions.saved()
+      await actions.savedFormLookup()
     }
     catch(e){
+      actions.addError(e)
       console.error(e)
     }
   },
@@ -125,12 +144,13 @@ export default {
         }
         catch(e){
           console.error(e)
+          actions.addError(e)
         }
       })
       
       instantSaveForm(state)
       //Sends to FaunaDB now
-      //console.log("sending to faunaDB")
+      console.log("sending to faunaDB")
       const client = state.activeFaunaClient
       const response = await effects.sendForm({client,form:{...state.activeForm}})
       //console.log(response)
@@ -158,7 +178,7 @@ export default {
     state.activeForm = JSON.parse(JSON.stringify(defaultForm))
     instantSaveForm(state.activeForm)
   },
-  failSendForm: ({state}) => {
-
+  failSendForm: ({actions},error) => {
+    actions.addError(error)
   }
 }

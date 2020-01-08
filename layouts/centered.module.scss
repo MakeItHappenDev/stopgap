@@ -55,16 +55,16 @@ button{
     min-height:100vh;
     grid-template:
     "header" auto
-    "saved" auto
     "page  " auto
+    "saved" auto
     "..." minmax(1rem,1fr)
     / 1fr;
     @media screen AND (min-width:1024px){
       grid-template:
       "topLeft header topRight" auto
-      "topLeft saved topRight" auto
       "topLeft page  topRight" 5rem
       "..... page  ..." auto
+      "..... saved ..." auto
       "... .... ....." minmax(1rem,1fr)
       / 1fr 1000px 1fr;
       &:after{

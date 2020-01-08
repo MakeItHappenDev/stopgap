@@ -3,7 +3,9 @@ export default {
   states:{
     'ALWAYS':{
       on:{
-        clearErrors:'ALWAYS'
+        addError:'ALWAYS',
+        clearErrors:'ALWAYS',
+        savedFormLookup:'ALWAYS'
       }
     }
   }

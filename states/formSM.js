@@ -5,7 +5,8 @@ export default {
       on:{
         setField:'FILLING',
         sendAllSavedForms:'SENDING',
-        resumeForm:'EMPTY'
+        resumeForm:'EMPTY',
+        reloadForm:'EMPTY'
       }
     },
     FILLING:{

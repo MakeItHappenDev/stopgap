@@ -72,8 +72,6 @@ export default ()=> {
         <button onClick={()=>actions.stashForm()} disabled={!state.actions.stashForm}>Save</button>
         <button onClick={()=>actions.sendForm()} disabled={!state.actions.sendForm}>Send</button>
       </nav>
-
-
     </main>
 
   )

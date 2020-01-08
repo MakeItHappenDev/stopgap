@@ -1,41 +1,31 @@
 import React, { useState,useEffect } from 'react'
 
-import PouchDB from 'pouchdb'
 import { useOvermind } from '../states/index'
 
 
-const savedDB = new PouchDB('savedForms',{auto_compaction: true})
 
 import styles from './savedForms.module.scss'
 
 
-const checkForms = async () => {
-  const doc = await savedDB.allDocs()
-  return doc.rows
-}
 
 
 export default () => {
-  const {state} = useOvermind()
+  const {state,actions} = useOvermind()
 
   useEffect(()=>{
-    //console.log("refreshing savedForms")
     const fetchForms = async () => {
-      const nbr = await checkForms()
-      setForms(nbr)
+      await actions.savedFormLookup()
     }
     fetchForms()
   },[])
 
-  const [forms,setForms] = useState([])
 
   return (
     <aside className={styles.savedForm}>
-      {(forms.length > 0 || state.savedForms.length > 0) && <>
+      {state.savedForms.length > 0 && <>
         <p>Saved forms:</p>
         <ul>
-          {forms.map(row => <li key={`savedForm-${row.id}`}>{row.id}</li>)}
-          {state.savedForms.map(row => <li key={`savedForm-${row}`}>{row}</li>)}
+          {state.savedForms.map(row => row.id).map(row => <li key={`savedForm-${row}`}><p>{row}{state.actions.reloadForm && <span onClick={()=>actions.reloadForm(row)}> (resume)</span>}</p><nav>delete</nav></li>)}
         </ul>
       </>}
     </aside>

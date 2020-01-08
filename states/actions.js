@@ -2,6 +2,7 @@ import fauna from 'faunadb'
 import secretKey from '../env/faunakey'
 
 import formActions from './formActions'
+import alwaysActions from './alwaysActions'
 
 
 
@@ -23,8 +24,8 @@ export default {
       actions.successLogin(response)
     }
   },
-  failLogin : ({state},message) => {
-    state.errors.push(message)
+  failLogin : ({actions},message) => {
+    actions.addError(message)
   },
   successLogin : ({state},response) => {
     //Clears errors
@@ -58,8 +59,8 @@ export default {
       actions.successFetchRamps(response)
     }
   },
-  failFetchRamps: ({state},error) => {
-
+  failFetchRamps: ({actions},error) => {
+    actions.addError(error)
   },
   successFetchRamps: ({state},ramps) => {
     state.fetchedRamps = ramps
@@ -67,8 +68,6 @@ export default {
 
 
   //General
-  clearErrors: ({state}) => {
-    state.errors = []
-  }
+  ...alwaysActions
 
 }
