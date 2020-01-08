@@ -16,6 +16,7 @@ const Home = () => {
           content="initial-scale=1.0, width=device-width"
         />
         <meta name="Description" content="Ramp request form to access businesses in the Ottawa area." />
+        <link rel="manifest" href="/manifest.json" />
       </Head>
       <Centered>
         <SavedForms/>

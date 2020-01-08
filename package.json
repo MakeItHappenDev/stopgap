@@ -1,6 +1,7 @@
 {
   "name": "create-next-example-app",
   "description": "A Next.js starter app.",
+  "engines": { "node": "12.x" },
   "repository": {
     "type": "git",
     "url": "https://github.com/zeit/now-examples/tree/master/nextjs"
@@ -18,12 +19,15 @@
     "faunadb": "^2.10.2",
     "next": "^9.1.6",
     "next-compose-plugins": "^2.2.0",
-    "next-offline": "^4.0.6",
     "node-sass": "^4.13.0",
     "overmind": "^21.0.1-1577270492009",
     "overmind-react": "^22.0.1-1577270492009",
     "pouchdb": "^7.1.1",
     "react": "^16.8.6",
-    "react-dom": "^16.8.6"
+    "react-dom": "^16.8.6",
+    "sw-precache-webpack-plugin": "^0.11.5"
+  },
+  "devDependencies": {
+    "next-workbox": "^2.1.0"
   }
 }
