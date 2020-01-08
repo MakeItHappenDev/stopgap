@@ -10,7 +10,7 @@
 
     {
       "src": "/img/logo.512.png",
-      "type": "image/ico",
+      "type": "image/png",
       "sizes": "512x512"
     }
   ],

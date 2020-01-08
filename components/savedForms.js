@@ -19,7 +19,7 @@ export default () => {
   const {state} = useOvermind()
 
   useEffect(()=>{
-    console.log("refreshing savedForms")
+    //console.log("refreshing savedForms")
     const fetchForms = async () => {
       const nbr = await checkForms()
       setForms(nbr)

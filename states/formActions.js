@@ -24,7 +24,7 @@ const instantSaveForm = async (activeForm)=>{
       form:JSON.stringify(activeForm)
     }
     const response = await formDB.put(myDoc)
-    console.log("New db: ",response,JSON.stringify(e))
+    //console.log("New db: ",response,JSON.stringify(e))
   }
 }
 const saveForm = debounce(instantSaveForm,500)
@@ -40,7 +40,7 @@ export default {
       }
     }
     catch(e){
-      return console.log(JSON.stringify(e),"No prior database")
+      //return console.log(JSON.stringify(e),"No prior database")
     }
   },
   setField: ({state,actions},{field,value}) => {
@@ -96,12 +96,12 @@ export default {
 
     //TODO check why imagesURL aren't wiped
     const asyncRun = async () => {
-      console.log("sending images to Cloudinary")
+      //console.log("sending images to Cloudinary")
       //Send images first, then the rest
       await asyncForEach([...state.activeForm.photos], async photo=>{
         //fetch photo + build fake form
         const blob = await imageDB.getAttachment(photo, 'picture')
-        console.log(blob)
+        //console.log(blob)
 
         const formData = new FormData()
         formData.append('upload_preset',cloudinary.preset)
@@ -115,7 +115,7 @@ export default {
           }) 
           if(res.ok){
             const payload = await res.json()
-            console.log(payload)
+            //console.log(payload)
             //Image uploaded, need to add url to imageURLs...
             state.activeForm.imagesURL? state.activeForm.imagesURL.push(payload.secure_url) : [payload.secure_url]
             // ... and remove from photos array + pop from pouchDB
@@ -130,10 +130,10 @@ export default {
       
       instantSaveForm(state)
       //Sends to FaunaDB now
-      console.log("sending to faunaDB")
+      //console.log("sending to faunaDB")
       const client = state.activeFaunaClient
       const response = await effects.sendForm({client,form:{...state.activeForm}})
-      console.log(response)
+      //console.log(response)
       if(response.error){
         return actions.failSendForm()
       }

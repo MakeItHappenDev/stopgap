@@ -17,6 +17,9 @@ const Home = () => {
         />
         <meta name="Description" content="Ramp request form to access businesses in the Ottawa area." />
         <link rel="manifest" href="/manifest.json" />
+        <meta name="theme-color" content="#973f7d"/>
+        <link rel="apple-touch-icon" href="/img/logo.512.png"></link>
+        <link rel="icon" type="image/png" href="/img/logo.192.png"></link>
       </Head>
       <Centered>
         <SavedForms/>
