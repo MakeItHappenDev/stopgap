@@ -5,7 +5,9 @@ export default {
       on:{
         addError:'ALWAYS',
         clearErrors:'ALWAYS',
-        savedFormLookup:'ALWAYS'
+        savedFormLookup:'ALWAYS',
+        deleteSavedForm:'ALWAYS',
+        sendAllForms:'ALWAYS'
       }
     }
   }

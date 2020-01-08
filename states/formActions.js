@@ -162,7 +162,6 @@ export default {
     asyncRun();
 
   },
-  sendingForm: ({state}) => {},
   resetForm: ({state}) => {
     state.activeForm.photos.forEach(p=>{
       //Remove each photos from the pouchDB
@@ -171,9 +170,7 @@ export default {
     state.activeForm = JSON.parse(JSON.stringify(defaultForm))
     instantSaveForm(state.activeForm)
   },
-  sendAllSavedForms: ({state}) => {
-
-  },
+  sendingForm: ({state}) => {},
   successSendForm: ({state}) => {
     state.activeForm = JSON.parse(JSON.stringify(defaultForm))
     instantSaveForm(state.activeForm)

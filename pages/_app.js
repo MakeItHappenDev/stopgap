@@ -9,7 +9,7 @@ const overmind = createOvermind(charts)
 
 class MyApp extends App {
 
-  componentDidMount() {
+  /* componentDidMount() {
     if ("serviceWorker" in navigator) {
       navigator.serviceWorker
         .register("/sw.js")
@@ -20,7 +20,7 @@ class MyApp extends App {
           console.warn("service worker registration failed", err.message);
         });
     }
-  }
+  } */
 
   render() {
     const { Component, pageProps } = this.props;

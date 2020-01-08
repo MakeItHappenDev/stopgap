@@ -4,7 +4,6 @@ export default {
     EMPTY:{
       on:{
         setField:'FILLING',
-        sendAllSavedForms:'SENDING',
         resumeForm:'EMPTY',
         reloadForm:'EMPTY'
       }

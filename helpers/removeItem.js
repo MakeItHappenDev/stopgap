@@ -1,5 +1,6 @@
-export default (db,id) => {
+export default async (db,id) => {
   //Destroy pouchDB image
-  db.get(id).then(function(doc) {
-  return db.remove(doc);})
+  const doc = await db.get(id)
+  return await db.remove(doc)
+
 }
