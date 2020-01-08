@@ -1,0 +1,23 @@
+{
+  "name": "StopGap ramp Request",
+  "short_name": "StopGap",
+  "icons": [
+    {
+      "src": "/img/logo.192.png",
+      "type": "image/png",
+      "sizes": "192x192"
+    },
+
+    {
+      "src": "/img/logo.512.png",
+      "type": "image/ico",
+      "sizes": "512x512"
+    }
+  ],
+  "background_color": "#FFFFFF",
+  "description": "Ramp request for stopgap",
+  "display": "fullscreen",
+  "start_url": "/",
+  "theme_color": "#000",
+  "prefer_related_applications": false
+}

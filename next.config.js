@@ -1,7 +1,14 @@
-const withCSS = require("@zeit/next-css");
 const withSass = require('@zeit/next-sass')
 const withOffline = require('next-offline')
+const withPlugins = require('next-compose-plugins');
 
-module.exports =  withOffline(withCSS(withSass({
-  cssModules: true
-})))
+module.exports =  withPlugins([
+  [withSass,{
+    cssModules: true,
+  }],
+  [withOffline],
+]);
+
+//withOffline(withCSS(withSass({
+//  cssModules: true
+//})))

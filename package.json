@@ -17,6 +17,7 @@
     "@zeit/next-sass": "^1.0.1",
     "faunadb": "^2.10.2",
     "next": "^9.1.6",
+    "next-compose-plugins": "^2.2.0",
     "next-offline": "^4.0.6",
     "node-sass": "^4.13.0",
     "overmind": "^21.0.1-1577270492009",
