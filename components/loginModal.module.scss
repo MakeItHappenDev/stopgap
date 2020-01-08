@@ -3,7 +3,8 @@
   grid-row: 1 / -1;
   z-index:11;
   justify-self: center;
-  align-self: center;
+  align-self: start;
+  margin-top: 2rem;
   pointer-events: auto;
   background-color:var(--BGlogin);
   color:var(--Clogin);

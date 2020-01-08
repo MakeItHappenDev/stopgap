@@ -32,7 +32,7 @@ export default () => {
   return (
     <aside className={styles.savedForm}>
       {(forms.length > 0 || state.savedForms.length > 0) && <>
-        <p>You have currently {forms.length} form(s) waiting to be uploaded.</p>
+        <p>Saved forms:</p>
         <ul>
           {forms.map(row => <li key={`savedForm-${row.id}`}>{row.id}</li>)}
           {state.savedForms.map(row => <li key={`savedForm-${row}`}>{row}</li>)}

@@ -79,7 +79,7 @@ export default (props) =>{
 
   return(
     <>
-        <input type="file" onChange={e=>pouchifyImage(e)}/>
+        <input type="file" id={props.field} onChange={e=>pouchifyImage(e)}/>
         {state.activeForm.photos.length > 0 && images.map((image,i)=><DisplayImage image={image} index={i} field={props.field} key={`image-${image}`}/>)}
         {state.activeForm.imagesURL.map((image,i)=><DisplayImage disabled={true} image={image} key={`image-${state.activeForm.imagesURL[i]}`}/>)}
         

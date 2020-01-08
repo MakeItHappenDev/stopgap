@@ -34,16 +34,16 @@ export default ()=> {
       <Choice field="nonResidential" value="No"></Choice>
 
       <h1>Where would you like a ramp?</h1>
-      <label>Business name *</label>
+      <label htmlFor="businessName">Business name *</label>
       <Input field="businessName"/>
-      <label>Address *</label>
+      <label htmlFor="businessAddress">Address *</label>
       <Input field="businessAddress"/>
       <label>Are you the owner of this business?*</label>
       <Choice field="owner" value="Yes"></Choice>
       <Choice field="owner" value="No"></Choice>
 
       <h1>Add a photo or two.</h1>
-      <p className={styles.full}>Be sure to show the step and entryway.</p>
+      <label htmlFor="photos">Be sure to show the step and entryway.</label>
       <div className={styles.uploadBox}>
         <ImageSaver field="photos"/>
       </div>
@@ -64,7 +64,7 @@ export default ()=> {
       <label>Can we contact you about this request?*</label>
       <Choice field="contactMe" value="Yes"></Choice>
       <Choice field="contactMe" value="No"></Choice>
-      <label>Email address</label>
+      <label htmlFor="requestEmail">Email address</label>
       <Input  field="requestEmail"/>
 
       <nav>
@@ -89,6 +89,6 @@ const Choice = props => {
 const Input = props => {
   const {state,actions} = useOvermind()
   return (
-    <input onChange={(e)=>actions.setField({field:props.field,value:e.target.value})} value={state.activeForm[props.field] || ""} />
+    <input id={props.field} onChange={(e)=>actions.setField({field:props.field,value:e.target.value})} value={state.activeForm[props.field] || ""} />
   )
 }

@@ -1,4 +1,4 @@
-import App, { Container } from "next/app";
+import App from "next/app";
 
 import { createOvermind } from 'overmind'
 import { Provider } from 'overmind-react'
@@ -11,11 +11,9 @@ class MyApp extends App {
   render() {
     const { Component, pageProps } = this.props;
     return (
-      <Container>
         <Provider value={overmind}>
           <Component {...pageProps} />
         </Provider>
-      </Container>
     );
   }
 }

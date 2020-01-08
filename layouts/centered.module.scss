@@ -10,7 +10,7 @@ html,body{
 :root{
   --BGbody:#f0f0f0;
   --BGpage:#f6f6f6;
-  --BGbutton:#4f8c8e;
+  --BGbutton:#33696b;
   --Cbutton:white;
   --BGbuttonDisabled:#bfbfbf;
   --CbuttonDisabled:white;
@@ -57,7 +57,7 @@ button{
     "header" auto
     "saved" auto
     "page  " auto
-    "... .... ....." minmax(1rem,1fr)
+    "..." minmax(1rem,1fr)
     / 1fr;
     @media screen AND (min-width:1024px){
       grid-template:
@@ -67,10 +67,6 @@ button{
       "..... page  ..." auto
       "... .... ....." minmax(1rem,1fr)
       / 1fr 1000px 1fr;
-
-      @for $i from 1 through 4{
-
-      }
       &:after{
         content: " ";
         background-color: var(--BGaccent);
@@ -81,20 +77,24 @@ button{
         background-color: var(--BGaccent);
         grid-area: topLeft;
       }
+      > main {
+        background-color: var(--BGpage);
+        box-shadow: var(--newmorphism);
+        z-index: 2;
+      }
+      >aside {
+        box-shadow: var(--newmorphism);
+        z-index: 2;
+      }
     }
     >header {
       grid-area:header;
     }
     > main {
       grid-area: page;
-      background-color: var(--BGpage);
-      box-shadow: var(--newmorphism);
-      z-index: 2;
     }
     >aside {
       grid-area: saved;
-      box-shadow: var(--newmorphism);
-      z-index: 2;
     }
   }
 }
