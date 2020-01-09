@@ -34,7 +34,7 @@ export default {
 
     }
     catch(e){
-      actions.addError(e)
+      actions.addError(e.toString())
     }
   },
   sendAllSavedForms: ({state}) => {

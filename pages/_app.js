@@ -9,8 +9,9 @@ const overmind = createOvermind(charts)
 
 class MyApp extends App {
 
-  /* componentDidMount() {
-    if ("serviceWorker" in navigator) {
+  // TODO remove in dev mode
+  componentDidMount() {
+    if ("serviceWorker" in navigator && process.env.NODE_ENV !== "development") {
       navigator.serviceWorker
         .register("/sw.js")
         .then(registration => {
@@ -20,7 +21,7 @@ class MyApp extends App {
           console.warn("service worker registration failed", err.message);
         });
     }
-  } */
+  }
 
   render() {
     const { Component, pageProps } = this.props;

@@ -23,7 +23,7 @@ const instantSaveForm = async (activeForm)=>{
       _id:'activeForm',
       form:JSON.stringify(activeForm)
     }
-    const response = await formDB.put(myDoc)
+    await formDB.put(myDoc)
     //console.log("New db: ",response,JSON.stringify(e))
   }
 }
@@ -56,7 +56,7 @@ export default {
       }
     }
     catch(e){
-      actions.addError(e)
+      actions.addError(e.toString())
       //return console.log(JSON.stringify(e),"No prior database")
     }
   },
@@ -106,7 +106,7 @@ export default {
       await actions.savedFormLookup()
     }
     catch(e){
-      actions.addError(e)
+      actions.addError(e.toString())
       console.error(e)
     }
   },
@@ -143,8 +143,7 @@ export default {
           }
         }
         catch(e){
-          console.error(e)
-          actions.addError(e)
+          actions.addError(e.toString())
         }
       })
       
@@ -159,7 +158,12 @@ export default {
       }
       actions.successSendForm()
     }
-    asyncRun();
+    try{
+      asyncRun();
+    }
+    catch(e){
+      actions.addError(e.toString())
+    }
 
   },
   resetForm: ({state}) => {

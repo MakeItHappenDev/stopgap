@@ -38,7 +38,7 @@ export default {
       q.Logout(true)
     ).then(()=> {
       state.activeFaunaClient = new fauna.Client({secret:secretKey})
-    }).catch(err => console.log(err.toString()))
+    }).catch(err => actions.addError(err.toString()))
   },
 
   //Form

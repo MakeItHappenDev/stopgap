@@ -1,4 +1,5 @@
 import React from 'react'
+import Link from 'next/link'
 import PouchDB from 'pouchdb'
 
 const formDB = new PouchDB('form',{auto_compaction: true})
@@ -10,6 +11,9 @@ export default () => {
   imageDB.destroy();
   saveDB.destroy();
   return(
-    <p>Reseting pouchDB(s)</p>
+    <>
+      <p>Reseting pouchDB(s)</p>
+      <p>Go back to the main app <Link href="/"><a>here</a></Link></p>
+    </>
   )
 }

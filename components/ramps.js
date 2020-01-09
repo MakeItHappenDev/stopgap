@@ -57,10 +57,10 @@ const DisplayRamp = (props) => {
       <h2>business address: {props.businessAddress}</h2>
       <p className={props.singleStep === "Yes" ? styles.correct:styles.false}>Single Step</p>
       <p className={props.nonResidential === "Yes" ? styles.correct:styles.false}>Non Residential</p>
-      <p className={props.Owner === "Yes" ? styles.correct:styles.false}>Owner</p>
+      <p className={props.owner === "Yes" ? styles.correct:styles.false}>Owner</p>
       <p className={props.sidewalkFlat === "Yes" ? styles.correct:styles.false}>Sidewalk is flat</p>
       <p className={props.wideStep === "Yes" ? styles.correct:styles.false}>Wide step</p>
-      <p className={props.preperHeightStep === "Yes" ? styles.correct:styles.false}>Proper height</p>
+      <p className={props.properHeightStep === "Yes" ? styles.correct:styles.false}>Proper height</p>
       <p className={props.contactMe === "Yes" ? styles.correct:styles.false}>Contact me : {props.email}</p>
       {props.imagesURL && props.imagesURL.map(photo=>(
         <figure><img src={photo} /></figure>

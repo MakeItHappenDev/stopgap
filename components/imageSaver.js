@@ -33,26 +33,25 @@ const storeImage = async (image) => {
 }
 
 const getImages = async (photos) => {
-
-  //If no photo, bypass logic
-  if(!photos || photos.length === 0){
-    //console.log("return empty array")
-    return []
-  }
-  //Fetch all documents having ID of the activeForm
-  const allDocs = await db.allDocs({include_docs: true, keys:photos})
-  //Target documents, to get IDs of the photos
-  const mappedDocs = allDocs.rows.map(r=>r.doc)
-  //console.log(mappedDocs)
-  let attachments = []
-  for(var i=0;i<mappedDocs.length;i++){
-    //MappedDocs can be null
-    if(mappedDocs[i]){
-      const blob = await db.getAttachment(mappedDocs[i]._id, 'picture')
-      attachments.push(URL.createObjectURL(blob))
+    //If no photo, bypass logic
+    if(!photos || photos.length === 0){
+      //console.log("return empty array")
+      return []
     }
-  }
-  return attachments
+    //Fetch all documents having ID of the activeForm
+    const allDocs = await db.allDocs({include_docs: true, keys:photos})
+    //Target documents, to get IDs of the photos
+    const mappedDocs = allDocs.rows.map(r=>r.doc)
+    //console.log(mappedDocs)
+    let attachments = []
+    for(var i=0;i<mappedDocs.length;i++){
+      //MappedDocs can be null
+      if(mappedDocs[i]){
+        const blob = await db.getAttachment(mappedDocs[i]._id, 'picture')
+        attachments.push(URL.createObjectURL(blob))
+      }
+    }
+    return attachments
 }
 
 export default (props) =>{
@@ -61,15 +60,26 @@ export default (props) =>{
   const [images,setImages] = useState([])
 
   const pouchifyImage = async (e) => {
-    const put = await storeImage(e.target.files[0])
-    const newPhotos = [...state.activeForm[props.field],put.id]
-    actions.setField({field:props.field,value:newPhotos})
-    //setImages(await getImages(newPhotos))
+    try{
+
+      const put = await storeImage(e.target.files[0])
+      const newPhotos = [...state.activeForm[props.field],put.id]
+      actions.setField({field:props.field,value:newPhotos})
+      //setImages(await getImages(newPhotos))
+    }
+    catch(e){
+      actions.addError(e.toString())
+    }
   }
 
   useEffect(()=>{
     const showBlobs = async (photos) => {
-      setImages(await getImages(photos))
+      try{
+        setImages(await getImages(photos))
+      }
+      catch(e){
+        actions.addError(e.toString())
+      }
     }
     showBlobs(state.activeForm['photos'])
   },[state.activeForm.photos])
