@@ -141,12 +141,15 @@ export default {
             removeItem(imageDB,photo)
             state.activeForm.photos.splice(state.activeForm.photos.indexOf(photo),1)
           }
+          else{
+            throw new Error(`Couldn't send pictures to cloudinary`)
+          }
         }
         catch(e){
-          actions.addError(e.toString())
+          //If something went bad in the cloudinary pipeline, throw an error and abort
+          throw e
         }
       })
-      
       instantSaveForm(state)
       //Sends to FaunaDB now
       console.log("sending to faunaDB")
@@ -162,7 +165,9 @@ export default {
       asyncRun();
     }
     catch(e){
+      //Catch errors thrown from cloudinary process or the fauna pipeline
       actions.addError(e.toString())
+      return actions.failSendForm()
     }
 
   },

@@ -6,7 +6,7 @@ const withPlugins = require('next-compose-plugins');
 const WB = {
   generateBuildId: async () => {
     // You must have own custom build id
-    return 'my-build-id';
+    return 'stopgap.1.0.1';
   }
 }
 
