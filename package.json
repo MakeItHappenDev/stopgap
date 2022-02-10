@@ -19,7 +19,7 @@
     "faunadb": "^2.10.2",
     "next": "^9.1.6",
     "next-compose-plugins": "^2.2.0",
-    "node-sass": "^4.13.0",
+    "node-sass": "^7.0.0",
     "overmind": "^21.0.1-1577270492009",
     "overmind-react": "^22.0.1-1577270492009",
     "pouchdb": "^7.1.1",
